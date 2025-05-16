@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soil Bearing Capacity Calculator | IS 6403:1981</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <span class="navbar-logo">🛠️ CivilTools</span>
+      <ul class="navbar-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#howitworks">How_it_works</a></li>
+         <li><a href="#features">Features</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>IS 6403:1981<br>Soil Bearing Capacity Calculator</h1>
+      <p>
+        Official, code-compliant tool for shallow foundation design in India.<br>
+        Accurate, fast, and easy - as per IS 6403:1981.
+      </p>
+      <a href="#calculator" class="cta-button">Calculate Now</a>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="howitworks" id="howitworks">
+    <h2>🔍 How We Calculate (IS 6403:1981)</h2>
+    <div class="iscode-card">
+      <div class="iscode-content">
+        <h3>As per IS 6403:1981 (Code of Practice for Determination of Bearing Capacity of Shallow Foundations)</h3>
+        <div class="formula">
+          <span>
+            <b>q<sub>u</sub> = cN<sub>c</sub> + qN<sub>q</sub> + 0.5γBN<sub>γ</sub></b>
+          </span>
+        </div>
+        <ul class="formula-vars">
+          <li><b>c</b>: Cohesion of soil (kPa) <span class="isref">(Table 2, IS 6403)</span></li>
+          <li><b>γ</b>: Effective unit weight (kN/m³) <span class="isref">(Clause 5.3)</span></li>
+          <li><b>q</b>: Overburden pressure at foundation depth = γ × D<sub>f</sub></li>
+          <li><b>B</b>: Width of footing (m) <span class="isref">(Clause 5.4)</span></li>
+          <li><b>N<sub>c</sub>, N<sub>q</sub>, N<sub>γ</sub></b>: Bearing capacity factors <span class="isref">(Fig. 1, IS 6403)</span></li>
+        </ul>
+        <div class="example-box">
+          <h4>Example (Sandy Soil, φ = 30°):</h4>
+          <p>
+            For B = 1.5m, γ = 18 kN/m³, D<sub>f</sub> = 1m<br>
+            N<sub>c</sub> = 30.14, N<sub>q</sub> = 18.40, N<sub>γ</sub> = 22.40 (from IS code)<br>
+            q<sub>u</sub> = 0 + (18×1×18.40) + (0.5×18×1.5×22.40) = 331.2 + 302.4 = <b>633.6 kPa</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <h2>🌟 Key Features (IS 6403:1981)</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>📜 IS 6403:1981 Compliant</h3>
+        <p>Exact formulas and factors from Indian Standard Code for shallow foundations.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🏗️ Indian Soil Presets</h3>
+        <p>Preset values for Alluvial, Black Cotton, Red, Laterite, and more.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔗 Clause References</h3>
+        <p>Direct links to all relevant IS code clauses in calculations.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🛡️ Safety Factors</h3>
+        <p>Applies IS-recommended safety factors (2.5–3.0) for static loads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <h2>🧮 Soil Bearing Capacity Calculator<br><span class="isref">(IS 6403:1981)</span></h2>
+      <form id="bearingForm" autocomplete="off">
+        <div class="form-group">
+          <label for="soilType">Soil Type</label>
+          <select id="soilType" required>
+            <option value="" disabled selected>Select soil type</option>
+            <option value="clay">Clay</option>
+            <option value="sand">Sand</option>
+            <option value="gravel">Gravel</option>
+            <option value="blackcotton">Black Cotton</option>
+            <option value="alluvial">Alluvial</option>
+            <option value="red">Red Soil</option>
+            <option value="other">Other (Manual Input)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cohesion">Cohesion, c (kPa)</label>
+          <input type="number" id="cohesion" placeholder="e.g., 25" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="unitWeight">Unit Weight, γ (kN/m³)</label>
+          <input type="number" id="unitWeight" placeholder="e.g., 18" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="depth">Foundation Depth, D<sub>f</sub> (m)</label>
+          <input type="number" id="depth" placeholder="e.g., 1.5" min="0" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="width">Footing Width, B (m)</label>
+          <input type="number" id="width" placeholder="e.g., 1.0" min="0" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="phi">Friction Angle, φ (°)</label>
+          <input type="number" id="phi" placeholder="e.g., 30" min="0" max="45" step="0.1" required>
+        </div>
+        <div class="form-group">
+          <label for="fos">Factor of Safety (IS 6403 Table 1)</label>
+          <input type="number" id="fos" placeholder="e.g., 2.5" min="1" step="0.1" value="2.5" required>
+        </div>
+        <button type="button" onclick="calculateBearing()">Calculate</button>
+        <div id="error" class="error"></div>
+      </form>
+      <div id="result" class="result"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>🏛️ About IS 6403:1981 Compliance</h2>
+    <div class="about-content">
+      <div class="about-card">
+        <h3>Code Requirements</h3>
+        <ul>
+          <li>Minimum foundation depth: <b>0.9 m</b> for residential buildings <span class="isref">(Clause 6.2.1)</span></li>
+          <li>Safety factors: <b>2.5–3.0</b> for static loads <span class="isref">(Table 1)</span></li>
+          <li>Water table corrections: <b>Apply as per Clause 5.3.3</b></li>
+          <li>Bearing capacity factors: <b>Refer Fig. 1, IS 6403</b></li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h3>Typical Indian Soil Values</h3>
+        <table>
+          <tr><th>Soil Type</th><th>Bearing Capacity (kPa)</th><th>IS Reference</th></tr>
+          <tr><td>Soft Clay</td><td>50–100</td><td>Annex A.2</td></tr>
+          <tr><td>Compact Sand</td><td>250–400</td><td>Annex A.4</td></tr>
+          <tr><td>Black Cotton</td><td>50–150</td><td>Annex A.7</td></tr>
+          <tr><td>Alluvial Soil</td><td>100–150</td><td>Annex A.5</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="about-extra">
+      <h3>Why Use This Tool?</h3>
+      <ul>
+        <li>Ensures compliance with Indian building regulations</li>
+        <li>Reduces manual calculation errors</li>
+        <li>Quickly compare soil types and foundation options</li>
+        <li>Ideal for field engineers, consultants, and students</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <span>© 2025 Soil Bearing Capacity Calculator | IS 6403:1981</span>
+      <span class="footer-links">
+        <a href="#">Contact</a> | 
+        <a href="#">Privacy Policy</a>
+      </span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
